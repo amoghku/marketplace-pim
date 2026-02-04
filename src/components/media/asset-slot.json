@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_media_asset_slots",
+  "info": {
+    "displayName": "Asset Slot",
+    "description": "Master product media slot"
+  },
+  "options": {},
+  "attributes": {
+    "source_type": {
+      "type": "enumeration",
+      "enum": ["master", "vendor"],
+      "default": "master",
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "position": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

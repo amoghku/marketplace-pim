@@ -1,0 +1,129 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": "Product categorization tree shared across the marketplace"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true,
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "workflow_status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "draft",
+      "enum": [
+        "draft",
+        "ready_for_review",
+        "approved",
+        "rejected"
+      ],
+      "options": {
+        "columnName": "status"
+      }
+    },
+    "visibility": {
+      "type": "enumeration",
+      "required": true,
+      "default": "public",
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo-metadata",
+      "repeatable": false
+    },
+    "media_slots": {
+      "type": "component",
+      "component": "media.asset-slot",
+      "repeatable": true,
+      "min": 0,
+      "max": 5
+    },
+    "sort_rank": {
+      "type": "integer",
+      "default": 0
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "children"
+    },
+    "collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::collection.collection",
+      "mappedBy": "categories"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "parent"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "category"
+    },
+    "sync_status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "not_synced",
+      "enum": [
+        "not_synced",
+        "pending",
+        "synced",
+        "error"
+      ]
+    },
+    "sync_error": {
+      "type": "text"
+    },
+    "external_reference": {
+      "type": "string"
+    },
+    "approval_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::approval-task.approval-task",
+      "mappedBy": "category"
+    },
+    "value_per_points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.value-per-point"
+    }
+  }
+}

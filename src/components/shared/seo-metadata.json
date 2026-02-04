@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_seo_metadata",
+  "info": {
+    "displayName": "SEO Metadata"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "json",
+      "default": []
+    }
+  }
+}

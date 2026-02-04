@@ -1,0 +1,139 @@
+{
+  "kind": "collectionType",
+  "collectionName": "collections",
+  "info": {
+    "singularName": "collection",
+    "pluralName": "collections",
+    "displayName": "Collection",
+    "description": "Curated product groups surfaced across the marketplace"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true,
+      "filterable": true,
+      "bulkable": true,
+      "searchable": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "workflow_status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "ready_for_review",
+      "enum": [
+        "draft",
+        "ready_for_review",
+        "approved",
+        "rejected"
+      ],
+      "options": {
+        "columnName": "status"
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": true,
+          "readOnly": true
+        }
+      }
+    },
+    "visibility": {
+      "type": "enumeration",
+      "required": true,
+      "default": "public",
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo-metadata",
+      "repeatable": false
+    },
+    "media_slots": {
+      "type": "component",
+      "component": "media.asset-slot",
+      "repeatable": true,
+      "max": 5
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "collections"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "collections"
+    },
+    "value_per_points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.value-per-point"
+    },
+    "approval_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::approval-task.approval-task",
+      "mappedBy": "collection"
+    },
+    "scheduled_start": {
+      "type": "datetime"
+    },
+    "scheduled_end": {
+      "type": "datetime"
+    },
+    "sort_rank": {
+      "type": "integer",
+      "default": 0
+    },
+    "sync_status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "not_synced",
+      "enum": [
+        "not_synced",
+        "pending",
+        "synced",
+        "error"
+      ]
+    },
+    "sync_error": {
+      "type": "text"
+    },
+    "external_reference": {
+      "type": "string"
+    },
+    "notes_for_reviewer": {
+      "type": "text"
+    },
+    "requested_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

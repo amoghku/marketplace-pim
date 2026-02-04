@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_product_variant_blueprints",
+  "info": {
+    "displayName": "Variant Blueprint"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sku_suffix": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "option_values": {
+      "type": "json",
+      "default": {}
+    }
+  }
+}

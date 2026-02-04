@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_product_option_definitions",
+  "info": {
+    "displayName": "Option Definition"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "values": {
+      "type": "json",
+      "default": []
+    }
+  }
+}

@@ -40,6 +40,18 @@ Strapi gives you many possible deployment options for your project including [St
 yarn strapi deploy
 ```
 
+## 🔁 Medusa sync
+
+Collections and categories now push updates to the Medusa backend once they reach the `approved` status. Configure the following environment variables before running syncs:
+
+```
+MEDUSA_BACKEND_URL=http://localhost:9000
+MEDUSA_STRAPI_SYNC_SECRET=replace-with-shared-secret
+MEDUSA_SYNC_DISABLED=false
+```
+
+Strapi uses the `STRAPI_SYNC_SECRET`/`MEDUSA_STRAPI_SYNC_SECRET` pair to authenticate against the Medusa `/admin/strapi-sync/*` endpoints (they should be set to the same value). Set `MEDUSA_SYNC_DISABLED=true` if you need to temporarily pause outbound syncs (for example during bulk imports).
+
 ## 📚 Learn more
 
 - [Resource center](https://strapi.io/resource-center) - Strapi resource center.

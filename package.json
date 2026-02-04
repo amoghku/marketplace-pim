@@ -9,6 +9,7 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
+    "import:initial-catalog": "node ./scripts/import-initial-catalog.js",
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
@@ -18,13 +19,14 @@
     "@strapi/plugin-cloud": "5.33.1",
     "@strapi/plugin-users-permissions": "5.33.1",
     "@strapi/strapi": "5.33.1",
+    "csv-parse": "^6.1.0",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "slugify": "^1.6.6",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_pricing_value_per_points",
+  "info": {
+    "displayName": "Value Per Point",
+    "description": "Overrides the monetary value for a point in a specific currency and sales channel"
+  },
+  "options": {},
+  "attributes": {
+    "currency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::currency.currency",
+      "required": true
+    },
+    "sales_channel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sales-channel.sales-channel",
+      "required": true
+    },
+    "vpp": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Products",
+    "description": "Master product templates"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "sku": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "pending_review",
+        "published",
+        "archived"
+      ],
+      "default": "draft"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "vendor_notes": {
+      "type": "text"
+    },
+    "default_price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "compare_at_price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "INR"
+    },
+    "value_per_points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.value-per-point"
+    },
+    "tax_class": {
+      "type": "string"
+    },
+    "media_assets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.asset-slot",
+      "max": 5
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option-definition"
+    },
+    "variant_blueprints": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.variant-blueprint"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::collection.collection",
+      "mappedBy": "products"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "master_product_id": {
+      "type": "string"
+    },
+    "last_synced_at": {
+      "type": "datetime"
+    },
+    "notes_for_reviewer": {
+      "type": "text"
+    },
+    "requested_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

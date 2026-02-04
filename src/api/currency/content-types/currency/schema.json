@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "currencies",
+  "info": {
+    "singularName": "currency",
+    "pluralName": "currencies",
+    "displayName": "Currency",
+    "description": "Reference list of supported currencies aligned with Medusa"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true,
+      "filterable": true,
+      "bulkable": true,
+      "searchable": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "symbol_native": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "decimal_digits": {
+      "type": "integer",
+      "default": 0
+    },
+    "rounding": {
+      "type": "decimal",
+      "default": 0
+    }
+  }
+}

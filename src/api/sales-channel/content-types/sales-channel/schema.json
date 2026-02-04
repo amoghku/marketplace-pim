@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sales_channels",
+  "info": {
+    "singularName": "sales-channel",
+    "pluralName": "sales-channels",
+    "displayName": "Sales Channel",
+    "description": "Medusa sales channel directory for marketplace operations"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true,
+      "filterable": true,
+      "bulkable": true,
+      "searchable": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

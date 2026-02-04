@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "approval_tasks",
+  "info": {
+    "singularName": "approval-task",
+    "pluralName": "approval-tasks",
+    "displayName": "Approval Task",
+    "description": "Tracks review workflow for catalogue changes"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true,
+      "filterable": true,
+      "bulkable": true,
+      "searchable": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "workflow_status": {
+      "type": "enumeration",
+      "enum": ["pending", "in_review", "approved", "rejected", "cancelled"],
+      "default": "pending",
+      "required": true,
+      "options": {
+        "columnName": "status"
+      }
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high"],
+      "default": "medium"
+    },
+    "entity_type": {
+      "type": "enumeration",
+      "enum": ["product", "category", "collection", "vendor", "other"],
+      "required": true
+    },
+    "entity_id": {
+      "type": "string",
+      "required": true
+    },
+    "entity_preview": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "text"
+    },
+    "requested_changes": {
+      "type": "text"
+    },
+    "decision_notes": {
+      "type": "text"
+    },
+    "context_snapshot": {
+      "type": "json"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "state_before": {
+      "type": "json"
+    },
+    "state_after": {
+      "type": "json"
+    },
+    "diff": {
+      "type": "json"
+    },
+    "requested_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "assigned_to": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "reviewed_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "due_at": {
+      "type": "datetime"
+    },
+    "decision_at": {
+      "type": "datetime"
+    },
+    "collection": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::collection.collection",
+      "inversedBy": "approval_tasks"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "approval_tasks"
+    }
+  }
+}
